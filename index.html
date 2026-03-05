@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Code Components Generator</title>
+    <link rel="stylesheet" href="./src/css/app-styles.css">
+</head>
+<body>
+    <div id="app-shell">
+        <aside id="sidebar">
+            <div class="sidebar-header">
+                <h2>Components</h2>
+            </div>
+            
+            <div id="component-list">
+                </div>
+
+            <div class="sidebar-footer">
+                <button id="create-meta-btn" class="secondary-btn">+ New Template</button>
+            </div>
+        </aside>
+
+        <main id="editor-container">
+            <header id="view-header">
+                <h1 id="active-component-name">Select a Component</h1>
+            </header>
+
+            <section id="dynamic-viewport">
+                <div id="form-insertion-point">
+                    <p class="placeholder-text">Choose a component from the left to start generating code.</p>
+                </div>
+            </section>
+
+            <footer id="action-bar">
+                <button id="generate-btn" disabled>Generate HTML</button>
+                <button id="export-btn" disabled>Save to File</button>
+            </footer>
+        </main>
+    </div>
+
+    <script src="./src/js/renderer.js"></script>
+</body>
+</html>
