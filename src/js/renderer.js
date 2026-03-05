@@ -20,4 +20,38 @@ async function initSidebar() {
     });
 }
 
+
+
 initSidebar();
+
+
+
+const formContainer = document.getElementById('form-insertion-point');
+
+
+async function loadComponent(folderName) {
+
+    if (!folderName) {
+        console.error("folderName is undefined!");
+        return;
+    }
+    try {
+        
+        const data = await window.myAPI.getComponentData(folderName);
+        
+        
+        const config = JSON.parse(data.config);
+
+        
+        document.getElementById('active-component-name').innerText = config.displayName;
+
+        
+        import('./form-builder.js').then(module => {
+            module.buildForm(config, formContainer);
+        });
+        
+    } catch (err) {
+        console.error("Error loading component UI:", err);
+        formContainer.innerHTML = `<p style="color:red">Error: Could not load the form for ${folderName}</p>`;
+    }
+}

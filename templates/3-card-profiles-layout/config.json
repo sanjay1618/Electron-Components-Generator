@@ -1,0 +1,23 @@
+{
+    "displayName": "Staff Triple Row",
+    "componentId": "profile-triple-row",
+    "fields": [
+      { "id": "p1_name", "label": "Profile 1: Name", "type": "text" },
+      { "id": "p1_title", "label": "Profile 1: Title", "type": "text" },
+      { "id": "p1_img", "label": "Profile 1: Image URL", "type": "text" },
+      { "id": "p1_email", "label": "Profile 1: Email", "type": "text" },
+      { "id": "p1_phone", "label": "Profile 1: Phone", "type": "text" },
+      
+      { "id": "p2_name", "label": "Profile 2: Name", "type": "text" },
+      { "id": "p2_title", "label": "Profile 2: Title", "type": "text" },
+      { "id": "p2_img", "label": "Profile 2: Image URL", "type": "text" },
+      { "id": "p2_email", "label": "Profile 2: Email", "type": "text" },
+      { "id": "p2_phone", "label": "Profile 2: Phone", "type": "text" },
+  
+      { "id": "p3_name", "label": "Profile 3: Name", "type": "text" },
+      { "id": "p3_title", "label": "Profile 3: Title", "type": "text" },
+      { "id": "p3_img", "label": "Profile 3: Image URL", "type": "text" },
+      { "id": "p3_email", "label": "Profile 3: Email", "type": "text" },
+      { "id": "p3_phone", "label": "Profile 3: Phone", "type": "text" }
+    ]
+  }

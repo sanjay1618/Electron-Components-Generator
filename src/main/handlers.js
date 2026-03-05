@@ -28,9 +28,25 @@ const getTemplateNamesList =  async () => {
 };
 
 
+const getComponentData = async (event, folderName) => {
+    const componentPath = path.join(app.getAppPath(), 'templates', folderName);
+    
+    
+    const config = fs.readFileSync(path.join(componentPath, 'config.json'), 'utf8');
+    const template = fs.readFileSync(path.join(componentPath, 'template.hbs'), 'utf8');
+    const css = fs.readFileSync(path.join(componentPath, 'style.css'), 'utf8');
+
+
+    return {
+        config: config,     
+        template: template, 
+        css: css   
+    };
+}
 
 function regiserHandlers() {
     ipcMain.handle('get-template-names',getTemplateNamesList);
+    ipcMain.handle('get-component-data', getComponentData)
 }
 
 module.exports = {
