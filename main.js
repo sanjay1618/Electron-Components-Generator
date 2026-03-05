@@ -1,7 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const fs = require('fs');
-
+const {regiserHandlers} = require('./src/main/handlers.js')
 
 function createWindow() {
   const win = new BrowserWindow({
@@ -18,6 +18,8 @@ function createWindow() {
   win.loadFile(path.join(__dirname, 'index.html'));
 }
 
+regiserHandlers();
+
 app.whenReady().then(createWindow);
 
 app.on('window-all-closed', () => {
@@ -25,26 +27,3 @@ app.on('window-all-closed', () => {
 });
 
 
-ipcMain.handle('get-template-names', async () => {
-        const templatesPath = path.join(app.getAppPath(), 'templates');
-    
-        try {
-            
-            if (!fs.existsSync(templatesPath)) {
-                
-                fs.mkdirSync(templatesPath);
-                return [];
-            }
-            const files = fs.readdirSync(templatesPath, { withFileTypes: true });
-    
-         
-            const folderNames = files
-                .filter(dirent => dirent.isDirectory())
-                .map(dirent => dirent.name);
-    
-            return folderNames; 
-        } catch (err) {
-            console.error("Failed to read templates directory:", err);
-            return [];
-        }
-    });

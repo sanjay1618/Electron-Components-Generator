@@ -11,7 +11,7 @@ async function initSidebar() {
     folders.forEach(folderName => {
         const btn = document.createElement('button');
         btn.classList.add('component-btn');
-        btn.innerText = folderName; 
+        btn.innerText = folderName.toUpperCase(); 
         
        
         btn.onclick = () => loadComponent(folderName);
