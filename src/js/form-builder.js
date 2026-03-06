@@ -5,24 +5,26 @@ export function buildForm(config, container) {
     form.id = 'active-form';
 
     config.fields.forEach((field, index) => {
-        // Create Section Header every 5 fields
-        if (index % 5 === 0) {
+        
+        if (config.useCardHeaders && index % 5 === 0) {
             const header = document.createElement('h4');
-            header.innerText = `Profile Card ${Math.floor(index / 5) + 1}`;
+            header.innerText = `Card ${Math.floor(index / 5) + 1}`;
             form.appendChild(header);
         }
 
         const group = document.createElement('div');
         group.className = 'form-group';
+
+       
+        const inputHTML = field.type === 'textarea' 
+            ? `<textarea id="${field.id}" class="form-input" rows="4" placeholder="Enter ${field.label.toLowerCase()}..."></textarea>`
+            : `<input type="${field.type}" id="${field.id}" class="form-input" placeholder="Enter ${field.label.toLowerCase()}...">`;
+
         group.innerHTML = `
             <label for="${field.id}">${field.label}</label>
-            <input 
-                type="${field.type}" 
-                id="${field.id}" 
-                class="form-input" 
-                placeholder="Enter ${field.label.toLowerCase()}..."
-            >
+            ${inputHTML}
         `;
+        
         form.appendChild(group);
     });
 

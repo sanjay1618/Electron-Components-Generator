@@ -1,6 +1,7 @@
 {
     "displayName": "Staff Triple Row",
     "componentId": "profile-triple-row",
+    "useCardHeaders": true,
     "fields": [
       { "id": "p1_name", "label": "Profile 1: Name", "type": "text" },
       { "id": "p1_title", "label": "Profile 1: Title", "type": "text" },

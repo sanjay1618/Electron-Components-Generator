@@ -1,0 +1,29 @@
+{
+    "displayName": "Quick Nav Sidebar",
+    "componentId": "uwt-sidenav",
+    "useCardHeaders": false,
+    "fields": [
+      { "id": "nav_header", "label": "Sidebar Title", "type": "text", "placeholder": "Quick Navigation Guide" },
+      
+      { "id": "link1_text", "label": "Link 1 Text", "type": "text" },
+      { "id": "link1_url", "label": "Link 1 URL", "type": "text" },
+  
+      { "id": "link2_text", "label": "Link 2 Text", "type": "text" },
+      { "id": "link2_url", "label": "Link 2 URL", "type": "text" },
+  
+      { "id": "link3_text", "label": "Link 3 Text", "type": "text" },
+      { "id": "link3_url", "label": "Link 3 URL", "type": "text" },
+  
+      { "id": "link4_text", "label": "Link 4 Text", "type": "text" },
+      { "id": "link4_url", "label": "Link 4 URL", "type": "text" },
+  
+      { "id": "link5_text", "label": "Link 5 Text", "type": "text" },
+      { "id": "link5_url", "label": "Link 5 URL", "type": "text" },
+  
+      { "id": "link6_text", "label": "Link 6 Text", "type": "text" },
+      { "id": "link6_url", "label": "Link 6 URL", "type": "text" },
+  
+      { "id": "link7_text", "label": "Link 7 Text", "type": "text" },
+      { "id": "link7_url", "label": "Link 7 URL", "type": "text" }
+    ]
+  }
