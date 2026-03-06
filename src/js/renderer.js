@@ -1,4 +1,13 @@
 
+import { generateHTML } from './generator.js';
+
+
+let activeComponentData = {
+    template: '',
+    css: '',
+    config: null
+};
+
 async function initSidebar() {
    
     const folders = await window.myAPI.getComponentsList();
@@ -27,10 +36,10 @@ initSidebar();
 
 
 const formContainer = document.getElementById('form-insertion-point');
-
+const generateSaveBtn = document.getElementById('generate-save-btn');
 
 async function loadComponent(folderName) {
-
+    
     if (!folderName) {
         console.error("folderName is undefined!");
         return;
@@ -38,6 +47,11 @@ async function loadComponent(folderName) {
     try {
         
         const data = await window.myAPI.getComponentData(folderName);
+
+        //Saving the info to the global state.
+        activeComponentData.template = data.template;
+        activeComponentData.css = data.css;
+        activeComponentData.config = JSON.parse(data.config);
         
         
         const config = JSON.parse(data.config);
@@ -49,9 +63,25 @@ async function loadComponent(folderName) {
         import('./form-builder.js').then(module => {
             module.buildForm(config, formContainer);
         });
+
+        generateSaveBtn.disabled = false; 
+        generateSaveBtn.innerText = "Generate & Save HTML";
         
     } catch (err) {
         console.error("Error loading component UI:", err);
         formContainer.innerHTML = `<p style="color:red">Error: Could not load the form for ${folderName}</p>`;
     }
+   
 }
+
+generateSaveBtn.onclick = async () => {
+    console.log("button clicked");
+    
+    const finalHtml = generateHTML(
+        activeComponentData.template, 
+        activeComponentData.css
+    );
+    await window.myAPI.exportFinalFile(finalHtml);
+    
+    console.log("Component successfully generated and sent to save dialog.");
+};

@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Code Components Generator</title>
+    <title>Academic Affairs | Code Generator</title>
     <link rel="stylesheet" href="./src/css/app-styles.css">
 </head>
 <body>
@@ -12,11 +12,11 @@
                 <h2>Components</h2>
             </div>
             
-            <div id="component-list">
-                </div>
+            <nav id="component-list">
+                </nav>
 
             <div class="sidebar-footer">
-                <button id="create-meta-btn" class="secondary-btn">+ New Template</button>
+                <button id="create-meta-btn" class="secondary-btn">+ Meta Builder</button>
             </div>
         </aside>
 
@@ -32,12 +32,13 @@
             </section>
 
             <footer id="action-bar">
-                <button id="generate-btn" disabled>Generate HTML</button>
-                <button id="export-btn" disabled>Save to File</button>
+                <button id="generate-save-btn" class="primary-btn" disabled>
+                    Generate & Save HTML
+                </button>
             </footer>
         </main>
     </div>
 
-    <script src="./src/js/renderer.js"></script>
+    <script type="module" src="./src/js/renderer.js"></script>
 </body>
 </html>

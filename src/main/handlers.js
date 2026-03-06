@@ -44,9 +44,40 @@ const getComponentData = async (event, folderName) => {
     };
 }
 
+const exportFinalHTML =  async (event, finalHTML) => {
+    // 1. Open the System Save Dialog
+    const { filePath, canceled } = await dialog.showSaveDialog({
+        title: 'Save Component HTML',
+        defaultPath: 'academic-affairs-component',
+        filters: [
+            { name: 'HTML Files', extensions: ['html'] },
+            { name: 'All Files', extensions: ['*'] },
+            { name: 'Text File', extensions: ['txt']}
+        ]
+    });
+
+    // 2. If the user didn't hit 'Cancel'
+    if (!canceled && filePath) {
+        try {
+            // 3. Write the string to the physical file
+            fs.writeFileSync(filePath, finalHTML, 'utf8');
+            return { success: true, path: filePath };
+        } catch (error) {
+            console.error("Failed to save file:", error);
+            return { success: false, error: error.message };
+        }
+    }
+
+    return { success: false, reason: 'User canceled' };
+}
+
+
+
+
 function regiserHandlers() {
     ipcMain.handle('get-template-names',getTemplateNamesList);
-    ipcMain.handle('get-component-data', getComponentData)
+    ipcMain.handle('get-component-data', getComponentData);
+    ipcMain.handle('export-final-html',exportFinalHTML);
 }
 
 module.exports = {
